@@ -9,15 +9,25 @@ Option 1: Compile from NGinx Source with CloudFoundry docker image
 
    _docker run -w /binary-builder -v `pwd`:/binary-builder -it cloudfoundry/cflinuxfs3 bash _
    
-6. Configure nginx
+5. Configure nginx
 
    _./auto/configure --sbin-path=/usr/local/nginx/nginx --conf-path=/usr/local/nginx/nginx.conf --pid-path=/usr/local/nginx/nginx.pid --error-log-path=stderr --with-http_ssl_module --with-http_v2_module --with-http_realip_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_auth_request_module --with-http_random_index_module --with-http_secure_link_module --with-http_stub_status_module --without-http_uwsgi_module --without-http_scgi_module --with-pcre --with-pcre-jit --without-pcre2 --with-cc-opt='-fPIC -pie' --with-ld-opt='-fPIC -pie -z now' --with-compat --with-stream=dynamic --with-http_sub_module --add-dynamic-module='/binary-builder/njs/nginx'_
    
-8. Compile using make
+6. Compile using make
 
    _make_
    
-10. Get ngx_http_js_module.so from objs folder
+7. Get ngx_http_js_module.so from objs folder
+
+cflinuxfs4
+-------------
+4. Run cloudfoundry/cflinuxfs in it mode
+
+   _docker run --privileged -w /binary-builder -v `pwd`:/binary-builder -it cloudfoundry/cflinuxfs4 bash _
+   
+5. Configure nginx
+
+   _./auto/configure --sbin-path=/usr/local/nginx/nginx --conf-path=/usr/local/nginx/nginx.conf --pid-path=/usr/local/nginx/nginx.pid --error-log-path=stderr --with-http_ssl_module --with-http_v2_module --with-http_realip_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_auth_request_module --with-http_random_index_module --with-http_secure_link_module --with-http_stub_status_module --without-http_uwsgi_module --without-http_scgi_module --with-pcre --with-pcre-jit --with-cc-opt='-fPIC -pie' --with-ld-opt='-fPIC -pie -z now' --with-compat --with-stream=dynamic --with-http_sub_module --add-dynamic-module='/binary-builder/njs/nginx'_
 
 Option 2: Compile from CloudFoundry binary-builder with CloudFoundry docker image
 ---------------------------------------------------------------------------------------
